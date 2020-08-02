@@ -877,9 +877,6 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
 
-    
-    
-
     func retrieveproductcouponlist(name: String = "") -> JSON? {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/retrieveproductcouponlist"
