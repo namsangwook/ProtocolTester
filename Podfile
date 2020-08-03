@@ -14,5 +14,5 @@ target 'ProtocolTester' do
   # 암호화 관련
   pod 'CryptoSwift', '~> 1.0'
   pod 'SwiftyJSON', '~> 4.0'
-  
+
 end
