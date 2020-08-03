@@ -75,6 +75,11 @@ extension TestMainViewController {
             
             _ = accountresetpassword(name: "accountresetpassword", loginPw: "1234")
             
+            if let otp = otp(name: "otp") {
+                let otpNum = otp["otp"].stringValue
+                _ = checkotp(name: "checkotp", otp: otpNum)
+            }
+            
             _ = loginott(name: "loginott", loginId: UserManager.shared.loginId, loginPw: "1234", loginToken: "")
             
             _ = checkpincode(name: "checkpincode")

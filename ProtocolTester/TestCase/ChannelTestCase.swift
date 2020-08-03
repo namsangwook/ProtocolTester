@@ -21,6 +21,7 @@ extension TestMainViewController {
         }
         let channelId = channelList[0]["serviceId"].stringValue
         _ = epg(name: "epg", channelId: channelId)
+        _ = watchinginfo(name: "watchinginfo", channelId: channelId)
         channelList.forEach { (channel) in
             if channel["serviceId"].stringValue == "265" {
                 _ = nodeip(name: "nodeip(\(channel["serviceName"].stringValue))",
@@ -49,7 +50,7 @@ extension TestMainViewController {
 //                if favoriteList.count > 0 {
 //                    let channelId = favoriteList[0].stringValue
 //                    addLog(">>> testing for channel(\(channelId))")
-//                    _ = watchinginfo(name: "watchinginfo", channelId: channelId)
+                    
 //                }
 //            }
         }

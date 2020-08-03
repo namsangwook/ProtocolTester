@@ -633,6 +633,25 @@ extension BaseViewController {
         ]
         return requestMBSSynchronous(requestUrl, method: .put,  parameters: params, index: self.testCaseIndex)
     }
+
+    func otp(name: String = "") -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/otp"
+        let params = [
+            "loginId": UserManager.shared.loginId
+        ]
+        return requestMBSSynchronous(requestUrl, method: .post,  parameters: params, index: self.testCaseIndex)
+    }
+
+    func checkotp(name: String = "", otp: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/otp"
+        let params = [
+            "loginId": UserManager.shared.loginId,
+            "otp": otp
+        ]
+        return requestMBSSynchronous(requestUrl, method: .post,  parameters: params, index: self.testCaseIndex)
+    }
     
     func categoryversioncheck(name: String = "") -> JSON? {
         appendTestCase(name: name)
