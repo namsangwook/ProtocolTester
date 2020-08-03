@@ -18,6 +18,7 @@ extension TestMainViewController {
                        movieId: package["movieAssetId"].stringValue,
                        payYn: true,
                        resumeYn: false)
+            
         }
     }
 }
