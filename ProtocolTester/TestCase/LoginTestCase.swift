@@ -13,23 +13,49 @@ extension TestMainViewController {
 
     func testLogin() {
         
-        if let data = loginott(name: "loginott", loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) {
-            UserManager.shared.loginToken = data["loginToken"].stringValue
-            UserManager.shared.SAID = data["said"].stringValue
-            UserManager.shared.profileId = data["profile"][0]["profileId"].stringValue
+        if let login = loginott(name: "loginott", loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) {
+            
+            let profiles = login["profile"].arrayValue
+            profiles.forEach { (profile) in
+                if profile["lastLoginYN"] == "Y" {
+                    if profile["lockYN"] == "N" {
+                        UserManager.shared.loginToken = login["loginToken"].stringValue
+                        UserManager.shared.SAID = login["said"].stringValue
+                        UserManager.shared.profileId = profile["profileId"].stringValue
+                        
+                        addLog(">> result : \(profile["profileName"].stringValue) is not locked", extra1: "prifle Id : \(profile["profileId"].stringValue)", extra2: "token : \(login["loginToken"].stringValue)")
+                        return
+                    } else {
+                        addLog(">> result : \(profile["profileName"].stringValue) is locked, so profile login")
+
+                        if let profileLogin = profilelogin(name: "profilelogin", profileId: profile["profileId"].stringValue) {
+                            UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
+                            UserManager.shared.SAID = profileLogin["said"].stringValue
+                            UserManager.shared.profileId = profileLogin["profileId"].stringValue
+                            return
+                        }
+                    }
+                }
+            }
+            
+            addLog(">> try login token login with token", extra1: "login token : \(UserManager.shared.loginToken)")
+
+            _ = loginott(name: "loginott(token)", loginId: "", loginPw: "", loginToken: UserManager.shared.loginToken)
+
+            
             _ = getprofile(name: "getprofile")
             
-            if let profileLogin = profilelogin(name: "profilelogin", profileId: UserManager.shared.profileId) {
-                UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
-                
-                
-                _ = loginott(name: "loginott(token)", loginId: "", loginPw: "", loginToken: UserManager.shared.loginToken)
-                
-                //                _ = profilelogin(name: "profilelogin", profileId: UserManager.shared.profileId)
-                
-                //                _ = loginott(name: "loginott(token)", loginId: "", loginPw: "", loginToken: "Tssdf/sdlkfsdlsdf/")
-                
-            }
+//            if let profileLogin = profilelogin(name: "profilelogin", profileId: UserManager.shared.profileId) {
+//                UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
+//
+//
+//                _ = loginott(name: "loginott(token)", loginId: "", loginPw: "", loginToken: UserManager.shared.loginToken)
+//
+//                //                _ = profilelogin(name: "profilelogin", profileId: UserManager.shared.profileId)
+//
+//                //                _ = loginott(name: "loginott(token)", loginId: "", loginPw: "", loginToken: "Tssdf/sdlkfsdlsdf/")
+//
+//            }
             
             //            Range(1...10).forEach { (index) in
             //                _ = profileDelete(name: "profileDelete", profileId: "TV8000803000\(index)")

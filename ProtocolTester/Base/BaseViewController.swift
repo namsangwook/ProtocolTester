@@ -869,11 +869,7 @@ extension BaseViewController {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/smartdownload"
         var params: Parameters = Parameters()
-//
-//        let params = [
-////            "said": UserManager.shared.SAID,
-////            "language": UserManager.shared.languageCode,
-//        ]
+        params["language"] = UserManager.shared.languageCode
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
 
@@ -1114,4 +1110,16 @@ extension BaseViewController {
         
     }
     
+}
+
+
+extension BaseViewController {
+    func addLog(_ log: String, extra1: String = "", extra2: String = "") {
+        lists.append(TestCase(name: log, method: .get, result: "Log", request: extra1, response: extra2))
+        showDetail.append(false)
+        testCaseIndex += 1
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
