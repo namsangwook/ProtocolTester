@@ -25,6 +25,7 @@
 		242268972481E020005A437F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242268952481E020005A437F /* Logger.swift */; };
 		242268982481E020005A437F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242268962481E020005A437F /* UserManager.swift */; };
 		2486F5C324D7E7DD0008BA9D /* SettingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F5C224D7E7DD0008BA9D /* SettingTestCase.swift */; };
+		2486F5C524D7E9000008BA9D /* PurchaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2486F5C424D7E9000008BA9D /* PurchaseTestCase.swift */; };
 		24A8C53F24D435BF00B1F2D9 /* TestMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8C53E24D435BF00B1F2D9 /* TestMainViewController.swift */; };
 		24A8C54124D4370500B1F2D9 /* LoginTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8C54024D4370500B1F2D9 /* LoginTestCase.swift */; };
 		24A8C54324D437A100B1F2D9 /* HomeTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8C54224D437A100B1F2D9 /* HomeTestCase.swift */; };
@@ -58,6 +59,7 @@
 		242268952481E020005A437F /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		242268962481E020005A437F /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		2486F5C224D7E7DD0008BA9D /* SettingTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTestCase.swift; sourceTree = "<group>"; };
+		2486F5C424D7E9000008BA9D /* PurchaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTestCase.swift; sourceTree = "<group>"; };
 		24A8C53E24D435BF00B1F2D9 /* TestMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMainViewController.swift; sourceTree = "<group>"; };
 		24A8C54024D4370500B1F2D9 /* LoginTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTestCase.swift; sourceTree = "<group>"; };
 		24A8C54224D437A100B1F2D9 /* HomeTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTestCase.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				24A8C55024D43A0C00B1F2D9 /* PlayerTestCase.swift */,
 				24A8C54A24D4396700B1F2D9 /* MyTestCase.swift */,
 				2486F5C224D7E7DD0008BA9D /* SettingTestCase.swift */,
+				2486F5C424D7E9000008BA9D /* PurchaseTestCase.swift */,
 			);
 			path = TestCase;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2486F5C524D7E9000008BA9D /* PurchaseTestCase.swift in Sources */,
 				24A8C55124D43A0C00B1F2D9 /* PlayerTestCase.swift in Sources */,
 				241E061624CE77EA00149220 /* Defines.swift in Sources */,
 				24A8C54524D4386F00B1F2D9 /* OverallTestCase.swift in Sources */,

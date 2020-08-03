@@ -1016,6 +1016,21 @@ extension BaseViewController {
             ] as [String : Any]
         return requestMBSSynchronous(requestUrl, method: .put, parameters: params, index: self.testCaseIndex)
     }
+    
+    func paymentmethod(name: String = "", contentType: String, offerId: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/paymentmethod"
+        let params = [
+            "said": UserManager.shared.SAID,
+            "profileId": UserManager.shared.profileId,
+            "language": UserManager.shared.languageCode,
+            "contentType": contentType,
+            "offerId": offerId
+        ]
+        return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
+    }
+    
+    
 }
 
 

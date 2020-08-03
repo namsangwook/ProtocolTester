@@ -111,6 +111,11 @@ class MainViewController: UIViewController {
         vc.type = .Setting
         vcs.append(vc)
 
+        vc = TestMainViewController.instance
+        vc.title = "Purchase"
+        vc.type = .Purchase
+        vcs.append(vc)
+
         // Do any additional setup after loading the view.
         let tabs = SlidingTabsViewController.instance
         tabs.pages = vcs

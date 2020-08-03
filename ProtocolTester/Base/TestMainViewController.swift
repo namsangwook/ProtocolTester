@@ -21,6 +21,7 @@ enum TestType {
     case Search
     case Player
     case Setting
+    case Purchase
 }
 
 class TestMainViewController: BaseViewController {
@@ -61,6 +62,8 @@ class TestMainViewController: BaseViewController {
             testPlayer()
         case .Setting:
             testSetting()
+        case .Purchase:
+            testPurchase()
         }
         
     }
