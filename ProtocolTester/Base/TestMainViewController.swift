@@ -41,28 +41,36 @@ class TestMainViewController: BaseViewController {
     }
     
     override func test() {
-        getBasicInfo()
 
         switch type {
         case .Login:
             testLogin()
         case .Home:
+            getBasicInfo()
             testHome()
         case .Overall:
+            getBasicInfo()
             testOverall()
         case .NewRelease:
+            getBasicInfo()
             testNewRelease()
         case .Channel:
+            getBasicInfo()
             testChannel()
         case .My:
+            getBasicInfo()
             testMy()
         case .Search:
+            getBasicInfo()
             testSearch()
         case .Player:
+            getBasicInfo()
             testPlayer()
         case .Setting:
+            getBasicInfo()
             testSetting()
         case .Purchase:
+            getBasicInfo()
             testPurchase()
         }
         
