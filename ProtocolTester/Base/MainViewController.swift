@@ -92,11 +92,6 @@ class MainViewController: UIViewController {
         vcs.append(vc)
 
         vc = TestMainViewController.instance
-        vc.title = "My"
-        vc.type = .My
-        vcs.append(vc)
-
-        vc = TestMainViewController.instance
         vc.title = "Search"
         vc.type = .Search
         vcs.append(vc)
@@ -104,6 +99,16 @@ class MainViewController: UIViewController {
         vc = TestMainViewController.instance
         vc.title = "Player"
         vc.type = .Player
+        vcs.append(vc)
+
+        vc = TestMainViewController.instance
+        vc.title = "My"
+        vc.type = .My
+        vcs.append(vc)
+
+        vc = TestMainViewController.instance
+        vc.title = "Setting"
+        vc.type = .Setting
         vcs.append(vc)
 
         // Do any additional setup after loading the view.

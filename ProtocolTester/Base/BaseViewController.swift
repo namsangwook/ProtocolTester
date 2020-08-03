@@ -941,6 +941,17 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
 
+    func faqlist(name: String = "") -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/faqlist"
+        let params = [
+            "language": UserManager.shared.languageCode,
+        ]
+        return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
+    }
+
+    
+    
     func smartdownload(name: String = "") -> JSON? {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/smartdownload"

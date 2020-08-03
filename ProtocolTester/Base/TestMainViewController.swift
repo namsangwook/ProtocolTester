@@ -20,6 +20,7 @@ enum TestType {
     case My
     case Search
     case Player
+    case Setting
 }
 
 class TestMainViewController: BaseViewController {
@@ -58,6 +59,8 @@ class TestMainViewController: BaseViewController {
             testSearch()
         case .Player:
             testPlayer()
+        case .Setting:
+            testSetting()
         }
         
     }
