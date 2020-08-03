@@ -57,6 +57,8 @@ class ResultCell: UITableViewCell {
         name.textColor = .white
         method.textColor = .white
         result.textColor = .white
+        requestCopyBtn?.isHidden = false
+        responseCopyBtn?.isHidden = false
     }
     
     var showDetail: Bool = false{
@@ -75,6 +77,9 @@ class ResultCell: UITableViewCell {
         }
 
     }
+    
+    var requestCopyBtn: UIButton?
+    var responseCopyBtn: UIButton?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -102,6 +107,8 @@ class ResultCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-10)
         }
         
+        requestCopyBtn = button
+        
         response.isUserInteractionEnabled = true
         button = UIButton(type: .custom)
         button.backgroundColor = .clear
@@ -123,7 +130,7 @@ class ResultCell: UITableViewCell {
             make.right.equalToSuperview().offset(-10)
             make.top.equalToSuperview().offset(10)
         }
-
+        responseCopyBtn = button
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
