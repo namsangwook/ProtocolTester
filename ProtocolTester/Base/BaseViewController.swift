@@ -1006,14 +1006,13 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, method: .put, parameters: params, index: self.testCaseIndex)
     }
     
-    func collectionlisthidden(name: String = "", offerId: String) -> JSON? {
+    func collectionlisthidden(name: String = "", offerIdList: [String]) -> JSON? {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/collectionlisthidden"
-        let params = [
-            "said": UserManager.shared.SAID,
-            "profileId": UserManager.shared.profileId,
-            "offerId" : offerId,
-            ] as [String : Any]
+        var params = Parameters()
+        params["said"] = UserManager.shared.SAID
+        params["profileId"] = UserManager.shared.profileId
+        params["offerId"] = offerIdList
         return requestMBSSynchronous(requestUrl, method: .put, parameters: params, index: self.testCaseIndex)
     }
     

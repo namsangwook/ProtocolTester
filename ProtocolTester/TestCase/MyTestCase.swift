@@ -23,15 +23,15 @@ extension TestMainViewController {
         }
         
         if let purchaseRes = purchaselist(name: "purchaselist") {
+            let offerId = purchaseRes[0]["offerId"].stringValue
             _ = purchaselisthidden(name: "purchaselisthidden", offerId: ["OF20001"])
         }
         
         if let collectionRes = collectionlist(name: "collectionlist") {
-            if let collectionList = collectionRes.array {
-                if collectionList.count > 0 {
-                    _ = collectionlisthidden(name: "collectionlisthidden", offerId: "OF20001")
-                }
-            }
+            let collectionList = collectionRes.arrayValue
+//            let offerId = collectionList[0]["offerId"].stringValue
+            let offerId = "1000"
+            _ = collectionlisthidden(name: "collectionlisthidden", offerIdList: [offerId])
         }
         
         _ = retrieveowncouponlist(name: "retrieveowncouponlist")
