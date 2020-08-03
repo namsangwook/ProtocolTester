@@ -175,18 +175,39 @@ class BaseViewController: UIViewController {
             return
         }
 
-        guard let login = loginott(loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) else {
-            return
+        if let login = loginott(loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw)
+        {
+            let profiles = login["profile"].arrayValue
+            profiles.forEach { (profile) in
+                if profile["lastLoginYN"] == "Y" {
+                    if profile["lockYN"] == "N" {
+                        UserManager.shared.loginToken = login["loginToken"].stringValue
+                        UserManager.shared.SAID = login["said"].stringValue
+                        UserManager.shared.profileId = profile["profileId"].stringValue
+                        return
+                    } else {
+                        if let profileLogin = profilelogin(profileId: profile["profileId"].stringValue) {
+                            UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
+                            UserManager.shared.SAID = profileLogin["said"].stringValue
+                            UserManager.shared.profileId = profileLogin["profileId"].stringValue
+                            return
+                        }
+                    }
+                }
+            }
         }
-        UserManager.shared.loginToken = login["loginToken"].stringValue
-        UserManager.shared.SAID = login["said"].stringValue
-        UserManager.shared.profileId = login["profile"][0]["profileId"].stringValue
+//        guard let login = loginott(loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) else {
+//            return
+//        }
+//        UserManager.shared.loginToken = login["loginToken"].stringValue
+//        UserManager.shared.SAID = login["said"].stringValue
+//        UserManager.shared.profileId = login["profile"][0]["profileId"].stringValue
         
-        _ = getprofile()
-
-        if let profileLogin = profilelogin(profileId: UserManager.shared.profileId) {
-            UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
-        }
+//        _ = getprofile()
+//
+//        if let profileLogin = profilelogin(profileId: UserManager.shared.profileId) {
+//            UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
+//        }
         
         guard let version = categoryversioncheck() else {
             return
@@ -235,7 +256,7 @@ class BaseViewController: UIViewController {
                 }
             } else {
                 if UserManager.shared.seriesVodContentId.count == 0 {
-                    UserManager.shared.seriesVodContentId = content["contentGroupId"].stringValue
+                    UserManager.shared.seriesVodContentId = content["seriesAssetId"].stringValue
                 }
             }
         }
@@ -277,7 +298,14 @@ extension BaseViewController {
                 request = "* request time : \(dateString)\n* request url : \(requestUrlString)\n* method : \(method.rawValue)\n* headers\(headerString)"
 
             } else {
-                request = "* request time : \(dateString)\n* request url : \(requestUrlString)\n* method : \(method.rawValue)\n* params\n\t\(String(describing: parameters))\n* headers\(headerString)"
+                
+                var bodyString = String(describing: parameters)
+                if let httpBody = response.request?.httpBody,
+                    let bodyDesc = String(data: httpBody, encoding: .utf8) {
+                    bodyString = bodyDesc
+                }
+                
+                request = "* request time : \(dateString)\n* request url : \(requestUrlString)\n* method : \(method.rawValue)\n* body\n\t\(bodyString)\n* headers\(headerString)"
 
             }
             
@@ -395,31 +423,41 @@ extension BaseViewController {
     {
 //        let semaphore = DispatchSemaphore(value: 0)
         
-        var urlParams = ""
-        if let params = parameters {
-            urlParams = params.compactMap({ (key, value) -> String in
-                if var value = value as? String {
-                    value = value.stringByAddingPercentEncodingForRFC3986() ?? value
-//                    value = value.replacingOccurrences(of: "/", with: "%2F")
-                    return "\(key)=\(value)"
-                } else {
-                    return "\(key)=\(value)"
-                }
-            }).joined(separator: "&")
-        }
+//        var urlParams = ""
+//        if let params = parameters {
+//            urlParams = params.compactMap({ (key, value) -> String in
+//                if var value = value as? String {
+//                    value = value.stringByAddingPercentEncodingForRFC3986() ?? value
+////                    value = value.replacingOccurrences(of: "/", with: "%2F")
+//                    return "\(key)=\(value)"
+//                } else {
+//                    return "\(key)=\(value)"
+//                }
+//            }).joined(separator: "&")
+//        }
+//        let urlRequest = convertible as! String + "?" + urlParams
         
-        let urlRequest = convertible as! String + "?" + urlParams
+        
+        let urlRequest = convertible
         
         manager.request((method == .get || method == .delete) ? urlRequest : convertible,
                         method: method,
-                        parameters: (method == .get || method == .delete) ? nil : parameters,
+                        parameters: (method == .get || method == .delete) ? parameters : parameters,
                         encoding: (method == .get || method == .delete) ? URLEncoding.queryString : JSONEncoding.default,
                         headers: headers)
             .validate(statusCode: 200..<300)
             .responseData { (response: AFDataResponse<Data>) in
                 if let url = response.request?.url {
+                    print("\n==========================================================================")
                     print("* request: \(String(describing: url))")
                 }
+                if method == .post || method == .put {
+                    if let httpBody = response.request?.httpBody,
+                        let bodyDesc = String(data: httpBody, encoding: .utf8) {
+                        print("* httpBody: \(bodyDesc)")
+                    }
+                }
+                
                 print(">>> Headers : \(String(describing: headers))")
                 guard let data = response.data else {
                     completion(false, nil, response, nil)
@@ -431,7 +469,8 @@ extension BaseViewController {
                 
                 if let text = String(data: data, encoding: .utf8) {
                     print("* response : \(text)")
-                    
+                    print("==========================================================================\n")
+
                 }
                 
                 do {
@@ -668,9 +707,33 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
     
+    func packagedetail(name: String = "", offerId: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/packagedetail"
+        let params = [
+            "said": UserManager.shared.SAID,
+            "profileId": UserManager.shared.profileId,
+            "offerId": offerId,
+            "language": UserManager.shared.languageCode,
+        ]
+        return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
+    }
+    
     func serieslist(name:String = "", seriesId: String) -> JSON? {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/serieslist"
+        let params = [
+            "said": UserManager.shared.SAID,
+            "profileId": UserManager.shared.profileId,
+            "seriesAssetId": seriesId,
+            "language": UserManager.shared.languageCode,
+        ]
+        return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
+    }
+    
+    func seasonlist(name:String = "", seriesId: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/seasonlist"
         let params = [
             "said": UserManager.shared.SAID,
             "profileId": UserManager.shared.profileId,
@@ -740,7 +803,20 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
     
+    func watchinginfo(name: String = "", channelId: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/watchinginfo"
+        var params = Parameters()
+        params["said"] = UserManager.shared.SAID
+        params["profileId"] = UserManager.shared.profileId
+        params["deviceType"] = UserManager.shared.deviceType
+        params["uuid"] = UserManager.shared.deviceToken
+        let currentDate = Date.now
+        let dateString = currentDate.toString(format: "YYYY-MM-dd HH:mm:SS")
 
+        params["list"] = [["channelId": channelId, "entDt": dateString]]
+        return requestMBSSynchronous(requestUrl, method: .post, parameters: params, index: self.testCaseIndex)
+    }
     
     func epg(name: String = "", channelId: String) -> JSON? {
         appendTestCase(name: name)
@@ -1114,7 +1190,7 @@ extension BaseViewController {
 
 
 extension BaseViewController {
-    func addLog(_ log: String, extra1: String = "", extra2: String = "") {
+    func addLog(_ log: String, extra1: String = "LOG", extra2: String = "LOG") {
         lists.append(TestCase(name: log, method: .get, result: "Log", request: extra1, response: extra2))
         showDetail.append(false)
         testCaseIndex += 1

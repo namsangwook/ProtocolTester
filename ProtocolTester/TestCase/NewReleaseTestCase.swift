@@ -27,6 +27,12 @@ extension TestMainViewController {
         contentList.forEach { (content) in
             if content["isSeries"] == "N" {
                 if let package = vodwithpackage(name: "vodwithpackage(\(content["title"].stringValue))", contentId: content["contentGroupId"].stringValue) {
+                    let products = package["productList"].arrayValue
+                    products.forEach { (product) in
+                        if product["productType"].stringValue == "package" {
+                            _ = packagedetail(name: ">>> packagedetail(\(product["productName"]))", offerId: product["offerId"].stringValue)
+                        }
+                    }
                     //                    _ = nodeip(name: "nodeip",
                     //                               contentType: "VOD",
                     //                               contentPath: package["streaminfo"]["main"]["videoUrl"].stringValue,
@@ -67,6 +73,8 @@ extension TestMainViewController {
                 
             }
         }
+        
+        _ = seasonlist(name: "seasonlist", seriesId: UserManager.shared.seriesVodContentId)
         
     }
 }

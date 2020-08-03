@@ -22,7 +22,6 @@
 		242268812481DEEC005A437F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 242268802481DEEC005A437F /* Assets.xcassets */; };
 		242268842481DEEC005A437F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 242268822481DEEC005A437F /* LaunchScreen.storyboard */; };
 		242268902481DFCC005A437F /* Tester.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2422688C2481DFCC005A437F /* Tester.storyboard */; };
-		242268932481DFCC005A437F /* protocol.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2422688F2481DFCC005A437F /* protocol.plist */; };
 		242268972481E020005A437F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242268952481E020005A437F /* Logger.swift */; };
 		242268982481E020005A437F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242268962481E020005A437F /* UserManager.swift */; };
 		24A8C53F24D435BF00B1F2D9 /* TestMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A8C53E24D435BF00B1F2D9 /* TestMainViewController.swift */; };
@@ -55,7 +54,6 @@
 		242268832481DEEC005A437F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		242268852481DEEC005A437F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2422688C2481DFCC005A437F /* Tester.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tester.storyboard; sourceTree = "<group>"; };
-		2422688F2481DFCC005A437F /* protocol.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = protocol.plist; sourceTree = "<group>"; };
 		242268952481E020005A437F /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		242268962481E020005A437F /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		24A8C53E24D435BF00B1F2D9 /* TestMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMainViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				242268772481DEEB005A437F /* AppDelegate.swift */,
 				242268802481DEEC005A437F /* Assets.xcassets */,
 				242268822481DEEC005A437F /* LaunchScreen.storyboard */,
-				2422688F2481DFCC005A437F /* protocol.plist */,
 				242268852481DEEC005A437F /* Info.plist */,
 			);
 			path = ProtocolTester;
@@ -241,7 +238,6 @@
 				242268842481DEEC005A437F /* LaunchScreen.storyboard in Resources */,
 				242268812481DEEC005A437F /* Assets.xcassets in Resources */,
 				242268902481DFCC005A437F /* Tester.storyboard in Resources */,
-				242268932481DFCC005A437F /* protocol.plist in Resources */,
 				241E060824CE5F5300149220 /* SlidingTabs.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

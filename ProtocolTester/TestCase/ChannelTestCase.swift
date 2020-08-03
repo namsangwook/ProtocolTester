@@ -30,18 +30,28 @@ extension TestMainViewController {
                     payYn: true,
                     resumeYn: false)
             }
+            
         }
         
+        let notFreeChannel = channelList.first { (channel) -> Bool in
+            return channel["freeYn"].stringValue == "N"
+        }
+
+        if notFreeChannel != nil {
+            addLog(">>> testing for channel(\(notFreeChannel!["serviceName"].stringValue))")
+            _ = channelproductinfo(name: "channelproductinfo", channelId: notFreeChannel!["serviceId"].stringValue)
+        }
         
         _ = popularchannel(name: "popularchannel")
         
         if let favorite = favoritechannel(name: "favoritechannel") {
-            if let favoriteList = favorite["channelId"].array {
-                if favoriteList.count > 0 {
-                    let channelId = favoriteList[0].stringValue
-                    _ = channelproductinfo(name: "channelproductinfo", channelId: channelId)
-                }
-            }
+//            if let favoriteList = favorite["channelId"].array {
+//                if favoriteList.count > 0 {
+//                    let channelId = favoriteList[0].stringValue
+//                    addLog(">>> testing for channel(\(channelId))")
+//                    _ = watchinginfo(name: "watchinginfo", channelId: channelId)
+//                }
+//            }
         }
         
     }
