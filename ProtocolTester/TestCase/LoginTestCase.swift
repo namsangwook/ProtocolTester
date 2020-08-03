@@ -77,6 +77,13 @@ extension TestMainViewController {
         _ = getprofile(name: "getprofile")
         
         
+        if let profile =
+            profileCreate(name: "profileCreate", profileName: "swnam2", profilePic: imageSample)
+        {
+            let profileId = profile["profileId"].stringValue
+            _ = profileDelete(name: "profileDelete", profileId: profileId)
+        }
+        
         _ = accountresetpassword(name: "accountresetpassword", loginPw: "4321")
         
 //        _ = loginott(name: "loginott", loginId: UserManager.shared.loginId, loginPw: "4321", loginToken: "")

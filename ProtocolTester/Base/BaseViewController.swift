@@ -305,7 +305,7 @@ extension BaseViewController {
                     bodyString = bodyDesc
                 }
                 
-                request = "* request time : \(dateString)\n* request url : \(requestUrlString)\n* method : \(method.rawValue)\n* body\n\t\(bodyString)\n* headers\(headerString)"
+                request = "* request time : \(dateString)\n* request url : \(requestUrlString)\n* method : \(method.rawValue)\n* body : \(bodyString)\n* headers\(headerString)"
 
             }
             
