@@ -32,14 +32,19 @@ class ResultCell: UITableViewCell {
                 request.text = data.request
                 response.text = data.response
                 
-                if data.result != "fail" {
-                    name.textColor = .white
-                    method.textColor = .white
-                    result.textColor = .white
-                } else {
+                
+                if data.result == "Log" {
+                    name.textColor = UIColor(136, 191, 180)
+                    method.textColor = UIColor(136, 191, 180)
+                    result.textColor = UIColor(136, 191, 180)
+                } else if data.result == "fail" {
                     name.textColor = UIColor(247, 107, 107)
                     method.textColor = UIColor(247, 107, 107)
                     result.textColor = UIColor(247, 107, 107)
+                } else {
+                    name.textColor = .white
+                    method.textColor = .white
+                    result.textColor = .white
                 }
                 
                 request.sizeToFit()
