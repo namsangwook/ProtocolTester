@@ -35,14 +35,17 @@ extension TestMainViewController {
         }
         
         let notFreeChannel = channelList.first { (channel) -> Bool in
-            return channel["freeYn"].stringValue == "N"
+            return channel["freeYn"].stringValue == "Y"
         }
 
         if notFreeChannel != nil {
-            addLog(">>> testing for channel(\(notFreeChannel!["serviceName"].stringValue))")
-            _ = channelproductinfo(name: "channelproductinfo", channelId: notFreeChannel!["serviceId"].stringValue)
-            
-            _ = paymentmethod(name: "paymentmethod(\(notFreeChannel!["serviceName"]))", contentType: "channel", offerId: notFreeChannel!["serviceId"].stringValue)
+            addLog(">>> try to purchase channel(\(notFreeChannel!["serviceName"].stringValue))")
+            if let infoList = channelproductinfo(name: "\tchannelproductinfo", channelId: notFreeChannel!["serviceId"].stringValue) {
+
+                let offerId = infoList[0]["offerList"][0]["offerId"].stringValue
+                _ = paymentmethod(name: "\tpaymentmethod(\(notFreeChannel!["serviceName"]))", contentType: "channel", offerId: offerId)
+            }
+
 
         }
         

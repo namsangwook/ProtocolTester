@@ -35,7 +35,7 @@ extension TestMainViewController {
                         products.forEach { (product) in
                             if product["productType"].stringValue == "package" {
                                 packageProduct = product
-                                _ = packagedetail(name: ">>> packagedetail(\(product["productName"]))", offerId: product["offerId"].stringValue)
+                                _ = packagedetail(name: "\tpackagedetail(\(product["productName"]))", offerId: product["offerId"].stringValue)
                             }
                         }
                     }
@@ -44,7 +44,7 @@ extension TestMainViewController {
                 let series = serieslist(name: "serieslist(\(content["title"].stringValue))", seriesId: content["seriesAssetId"].stringValue)
                 if let seriesList = series?["list"].array {
                     seriesList.forEach { (content) in
-                        _ = vodwithpackage(name: "  series-vodwithpackage(\(content["seriesName"].stringValue)(\(content["episodeId"].stringValue))",
+                        _ = vodwithpackage(name: "\tseries-vodwithpackage(\(content["seriesName"].stringValue)(\(content["episodeId"].stringValue))",
                             contentId: content["contentGroupId"].stringValue)
                     }
                 }

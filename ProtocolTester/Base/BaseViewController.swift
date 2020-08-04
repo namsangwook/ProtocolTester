@@ -103,7 +103,7 @@ class BaseViewController: UIViewController {
             "iptv-lang-type": UserManager.shared.languageCode,
             "iptv-tx-id": uuid,
             "iptv-login-token" : UserManager.shared.loginToken,
-            "Deivce-Token": UserManager.shared.deviceToken
+            "Device-Token": UserManager.shared.deviceToken
         ]
         return headers
     }
