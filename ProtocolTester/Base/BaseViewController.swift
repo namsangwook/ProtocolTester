@@ -450,7 +450,7 @@ extension BaseViewController {
             .validate(statusCode: 200..<300)
             .responseData { (response: AFDataResponse<Data>) in
                 if let url = response.request?.url {
-                    print("\n==========================================================================")
+                    print("\n==================================================================================================")
                     print("* request: \(String(describing: url))")
                 }
                 if method == .post || method == .put {
@@ -464,14 +464,14 @@ extension BaseViewController {
                 guard let data = response.data else {
                     completion(false, nil, response, nil)
                     Logger.log("data is nil")
-                    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
+                    print("==================================================================================================\n")
 //                    semaphore.signal()
                     return
                 }
                 
                 if let text = String(data: data, encoding: .utf8) {
                     print("* response : \(text)")
-                    print("==========================================================================\n")
+                    print("==================================================================================================\n")
 
                 }
                 
@@ -490,6 +490,8 @@ extension BaseViewController {
                     } else {
                         completion(false, nil, response, nil)
                         Logger.log("bad json")
+                        print("==================================================================================================\n")
+
 //                        semaphore.signal()
                     }
                 } catch let error as NSError {
@@ -498,6 +500,8 @@ extension BaseViewController {
                     if let res = response.response {
                         Logger.log(String(describing: res))
                     }
+                    print("==================================================================================================\n")
+
 //                    semaphore.signal()
                     
                 }

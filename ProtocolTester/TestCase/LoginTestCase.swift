@@ -41,14 +41,14 @@ extension TestMainViewController {
         if UserManager.shared.loginToken.count > 0 {
             addLog(">> try token login with token", extra1: "login token : \(UserManager.shared.loginToken)")
 
-            if let login = loginott(name: "loginott(token)", loginId: "", loginPw: "", loginToken: UserManager.shared.loginToken) {
+            if let login = loginott(name: "\tloginott(token)", loginId: "", loginPw: "", loginToken: UserManager.shared.loginToken) {
                 processAutoLogin(login: login)
                 addLog(">> save token", extra1: "login token : \(UserManager.shared.loginToken)")
             } else {
                 addLog(">> token login failed with token", extra1: "login token : \(UserManager.shared.loginToken)")
                 addLog(">> try id, password login")
 
-                if let login = loginott(name: "loginott", loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) {
+                if let login = loginott(name: "\tloginott", loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) {
                     processAutoLogin(login: login)
                     addLog(">> save token", extra1: "login token : \(UserManager.shared.loginToken)")
 
@@ -62,7 +62,7 @@ extension TestMainViewController {
         } else {
             addLog(">> try token login with token", extra1: "login token : \(UserManager.shared.loginToken)")
 
-            if let login = loginott(name: "loginott", loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) {
+            if let login = loginott(name: "\tloginott", loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) {
                 processAutoLogin(login: login)
                 
 //                addLog(">> try login token login with token", extra1: "login token : \(UserManager.shared.loginToken)")

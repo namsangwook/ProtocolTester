@@ -37,18 +37,20 @@ extension TestMainViewController {
         _ = retrieveowncouponlist(name: "retrieveowncouponlist")
         if let coupons = retrieveproductcouponlist(name: "retrieveproductcouponlist") {
             let coupons = coupons["result"].arrayValue
-            coupons.forEach { (coupon) in
-                addLog(">>> try to purchase coupon(\(coupon["cpnNm"]))")
-                _ = paymentmethod(name: "paymentmethod(\(coupon["cpnNm"]))", contentType: "coupon", offerId: coupon["cpnTypeId"].stringValue)
-                
-                _ = purchasecoupon(name: "purchasecoupon", cpnTypeId: coupon["cpnTypeId"].stringValue, totalPrice: coupon["saleAmt"].stringValue, paymentMethod: "04")
+            coupons.enumerated().forEach { (index, coupon) in
+                if index == 0 {
+                    addLog(">>> try to purchase coupon(\(coupon["cpnNm"]))")
+                    _ = paymentmethod(name: "\tpaymentmethod(\(coupon["cpnNm"]))", contentType: "coupon", offerId: coupon["cpnTypeId"].stringValue)
+                    
+                    _ = purchasecoupon(name: "\tpurchasecoupon", cpnTypeId: coupon["cpnTypeId"].stringValue, totalPrice: coupon["saleAmt"].stringValue, paymentMethod: "04")
+                }
             }
         }
         
         
 
         addLog(">>> try to coupon register(010350304144001)")
-        _ = requestpromotioncouponnumberregister(name: "requestpromotioncouponnumberregister")
+        _ = requestpromotioncouponnumberregister(name: "\trequestpromotioncouponnumberregister")
 //        _ = purchasecoupon(name: "purchasecoupon")
         
         if let subscriptionRes = subscriptionlist(name: "subscriptionlist") {
