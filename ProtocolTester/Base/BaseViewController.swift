@@ -318,9 +318,11 @@ extension BaseViewController {
                 
                 
                 if index < self.lists.count {
+                    let responseString = String(describing: jsonObject)
+                    
                     self.lists[index].request = request
                     self.lists[index].method = method
-                    self.lists[index].response = String(describing: jsonObject)
+                    self.lists[index].response = String(responseString.prefix(100000))
                 }
                 if json["returnCode"] == "S" {
                     data = json["data"]
@@ -1001,16 +1003,16 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, method: .post, parameters: params, index: self.testCaseIndex)
     }
     
-    func purchasecoupon(name: String = "") -> JSON? {
+    func purchasecoupon(name: String = "", cpnTypeId: String, totalPrice: String, paymentMethod: String) -> JSON? {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/purchasecoupon"
-        let params = [
-            "said": UserManager.shared.SAID,
-            "profileId": UserManager.shared.profileId,
-            "offerId" : "1005",
-            "totalPrice" : "100",
-            "paymentMethod" : "06"
-        ]
+        var params = Parameters()
+        params["said"] = UserManager.shared.SAID
+        params["profileId"] = UserManager.shared.profileId
+//        params["language"] = UserManager.shared.languageCode
+        params["cpnTypeId"] = cpnTypeId
+        params["totalPrice"] = totalPrice
+        params["paymentMethod"] = paymentMethod
         return requestMBSSynchronous(requestUrl, method: .post, parameters: params, index: self.testCaseIndex)
     }
     
@@ -1047,8 +1049,24 @@ extension BaseViewController {
         ]
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
-    
-    
+
+    func requestpayment(name: String = "",
+                        contentType: String,
+                        offerId: String,
+                        totalPrice: Int,
+                        method: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/requestpayment"
+        var params = Parameters()
+        params["said"] = UserManager.shared.SAID
+        params["profileId"] = UserManager.shared.profileId
+        params["language"] = UserManager.shared.languageCode
+        params["contentType"] = contentType
+        params["offerId"] = offerId
+        params["totalPrice"] = totalPrice
+        params["payment"] = ["method": method, "price": totalPrice]
+        return requestMBSSynchronous(requestUrl, method: .post, parameters: params, index: self.testCaseIndex)
+    }
 }
 
 

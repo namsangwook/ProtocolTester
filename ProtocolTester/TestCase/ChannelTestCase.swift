@@ -41,6 +41,9 @@ extension TestMainViewController {
         if notFreeChannel != nil {
             addLog(">>> testing for channel(\(notFreeChannel!["serviceName"].stringValue))")
             _ = channelproductinfo(name: "channelproductinfo", channelId: notFreeChannel!["serviceId"].stringValue)
+            
+            _ = paymentmethod(name: "paymentmethod(\(notFreeChannel!["serviceName"]))", contentType: "channel", offerId: notFreeChannel!["serviceId"].stringValue)
+
         }
         
         _ = popularchannel(name: "popularchannel")

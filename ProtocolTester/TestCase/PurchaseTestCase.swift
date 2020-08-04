@@ -21,10 +21,8 @@ extension TestMainViewController {
                 let productList = vodInfo["productList"].arrayValue
                 if let product = productList.first(where: {$0["isPurchased"].stringValue == "N"}) {
                     _ = paymentmethod(name: "paymentmethod(\(product["productName"]))", contentType: "vod", offerId: product["offerId"].stringValue)
-                    
                 }
             }
-            
         }
     }
 }
