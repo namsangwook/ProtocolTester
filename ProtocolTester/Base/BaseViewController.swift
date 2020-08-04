@@ -1064,11 +1064,11 @@ extension BaseViewController {
         var params = Parameters()
         params["said"] = UserManager.shared.SAID
         params["profileId"] = UserManager.shared.profileId
-        params["language"] = UserManager.shared.languageCode
+//        params["language"] = UserManager.shared.languageCode
         params["contentType"] = contentType
         params["offerId"] = offerId
         params["totalPrice"] = totalPrice
-        params["payment"] = ["method": method, "price": totalPrice]
+        params["payment"] = [["method": method, "price": totalPrice]]
         return requestMBSSynchronous(requestUrl, method: .post, parameters: params, index: self.testCaseIndex)
     }
 }
@@ -1109,11 +1109,6 @@ extension BaseViewController {
         params["won_yn"] = won_yn
         params["TRANSACTION_ID"] = UserManager.shared.deviceToken
         params["langType"] = UserManager.shared.languageCode
-//        let params = [
-//            "said": UserManager.shared.SAID,
-//            "profileId": UserManager.shared.profileId,
-//            "offerId" : offerId,
-//            ] as [String : Any]
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
     
