@@ -49,8 +49,8 @@ extension TestMainViewController {
         
         
 
-        addLog(">>> try to coupon register(010350304144001)")
-        _ = requestpromotioncouponnumberregister(name: "\trequestpromotioncouponnumberregister")
+        addLog(">>> try to coupon register(01035-341-5051-001)")
+        _ = requestpromotioncouponnumberregister(name: "\trequestpromotioncouponnumberregister", couponNumber: "01035-203-0639-001")
 //        _ = purchasecoupon(name: "purchasecoupon")
         
         if let subscriptionRes = subscriptionlist(name: "subscriptionlist") {

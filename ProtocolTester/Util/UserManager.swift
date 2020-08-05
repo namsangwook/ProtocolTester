@@ -34,7 +34,7 @@ class UserManager {
     var SAID: String = "INVALID"
     var profileId: String = "INVALID"
     let deviceType: String = "OTA"
-    let deviceToken: String = "4808FA81-DDAF-4925-96CE-33AD912C29FF"
+    let deviceToken: String = "3808FA81-DDAF-4925-96CE-33AD912C29EE"
     var loginToken: String {
         get {
             string(forkey: Key.loginToken) ?? ""

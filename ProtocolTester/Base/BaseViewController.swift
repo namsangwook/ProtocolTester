@@ -996,13 +996,13 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
     
-    func requestpromotioncouponnumberregister(name: String = "") -> JSON? {
+    func requestpromotioncouponnumberregister(name: String = "", couponNumber: String) -> JSON? {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/requestpromotioncouponnumberregister"
         let params = [
             "said": UserManager.shared.SAID,
             "profileId": UserManager.shared.profileId,
-            "couponNumber": "010350304144001",
+            "couponNumber": couponNumber,
         ]
         return requestMBSSynchronous(requestUrl, method: .post, parameters: params, index: self.testCaseIndex)
     }
