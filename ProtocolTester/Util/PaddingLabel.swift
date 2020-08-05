@@ -18,7 +18,7 @@ class PaddingLabel: UILabel {
 //    @IBInspectable
     var leftInset: CGFloat = 7.0
 //    @IBInspectable
-    var rightInset: CGFloat = 40.0
+    var rightInset: CGFloat = 50.0
 //    @IBInspectable
     var cornerRadius: CGFloat = 2.0
   

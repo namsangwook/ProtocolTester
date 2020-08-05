@@ -165,6 +165,52 @@ class BaseViewController: UIViewController {
         }
     }
     
+    func processAutoLogin(login: JSON, showLog: Bool = true) {
+        let profiles = login["profile"].arrayValue
+        var lastLoginProfile: JSON?
+        for profile in profiles {
+            if profile["lastLoginYN"] == "Y" {
+                lastLoginProfile = profile
+                break
+            }
+        }
+        
+        if lastLoginProfile == nil {
+            if profiles.count > 0 {
+                lastLoginProfile = profiles[0]
+            }
+        }
+        
+        guard let finalProfile = lastLoginProfile else {
+            if showLog {
+                addLog(">>>> no profile to login available!!!!!")
+            }
+            return
+        }
+        
+        if finalProfile["lockYN"] == "N" {
+            UserManager.shared.loginToken = login["loginToken"].stringValue
+            UserManager.shared.SAID = login["said"].stringValue
+            UserManager.shared.profileId = finalProfile["profileId"].stringValue
+            
+            if showLog {
+                addLog(">> result : \(finalProfile["profileName"].stringValue) is not locked", extra1: "prifle Id : \(finalProfile["profileId"].stringValue)", extra2: "token : \(login["loginToken"].stringValue)")
+            }
+
+            
+        } else {
+            if showLog {
+                addLog(">> result : \(finalProfile["profileName"].stringValue) is locked, so profile login")
+            }
+
+            if let profileLogin = profilelogin(name: "profilelogin", profileId: finalProfile["profileId"].stringValue) {
+                UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
+                UserManager.shared.SAID = profileLogin["said"].stringValue
+                UserManager.shared.profileId = profileLogin["profileId"].stringValue
+            }
+        }
+    }
+    
     func getBasicInfo() {
         
         if UserManager.shared.categoryVersion != "0",
@@ -174,28 +220,33 @@ class BaseViewController: UIViewController {
             UserManager.shared.seriesVodContentId.count > 0 {
             return
         }
-
-        if let login = loginott(loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw)
-        {
-            let profiles = login["profile"].arrayValue
-            profiles.forEach { (profile) in
-                if profile["lastLoginYN"] == "Y" {
-                    if profile["lockYN"] == "N" {
-                        UserManager.shared.loginToken = login["loginToken"].stringValue
-                        UserManager.shared.SAID = login["said"].stringValue
-                        UserManager.shared.profileId = profile["profileId"].stringValue
-                        return
-                    } else {
-                        if let profileLogin = profilelogin(profileId: profile["profileId"].stringValue) {
-                            UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
-                            UserManager.shared.SAID = profileLogin["said"].stringValue
-                            UserManager.shared.profileId = profileLogin["profileId"].stringValue
-                            return
-                        }
-                    }
-                }
-            }
+        
+        if let login = loginott(loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) {
+            processAutoLogin(login: login, showLog: false)
         }
+        
+        
+//        if let login = loginott(loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw)
+//        {
+//            let profiles = login["profile"].arrayValue
+//            profiles.forEach { (profile) in
+//                if profile["lastLoginYN"] == "Y" {
+//                    if profile["lockYN"] == "N" {
+//                        UserManager.shared.loginToken = login["loginToken"].stringValue
+//                        UserManager.shared.SAID = login["said"].stringValue
+//                        UserManager.shared.profileId = profile["profileId"].stringValue
+//                        return
+//                    } else {
+//                        if let profileLogin = profilelogin(profileId: profile["profileId"].stringValue) {
+//                            UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
+//                            UserManager.shared.SAID = profileLogin["said"].stringValue
+//                            UserManager.shared.profileId = profileLogin["profileId"].stringValue
+//                            return
+//                        }
+//                    }
+//                }
+//            }
+//        }
 //        guard let login = loginott(loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) else {
 //            return
 //        }

@@ -11,31 +11,7 @@ import SwiftyJSON
 
 extension TestMainViewController {
     
-    private func processAutoLogin(login: JSON) {
-        let profiles = login["profile"].arrayValue
-        profiles.forEach { (profile) in
-            if profile["lastLoginYN"] == "Y" {
-                if profile["lockYN"] == "N" {
-                    UserManager.shared.loginToken = login["loginToken"].stringValue
-                    UserManager.shared.SAID = login["said"].stringValue
-                    UserManager.shared.profileId = profile["profileId"].stringValue
-                    
-                    addLog(">> result : \(profile["profileName"].stringValue) is not locked", extra1: "prifle Id : \(profile["profileId"].stringValue)", extra2: "token : \(login["loginToken"].stringValue)")
-                    return
-                } else {
-                    addLog(">> result : \(profile["profileName"].stringValue) is locked, so profile login")
-                    
-                    if let profileLogin = profilelogin(name: "profilelogin", profileId: profile["profileId"].stringValue) {
-                        UserManager.shared.loginToken = profileLogin["loginToken"].stringValue
-                        UserManager.shared.SAID = profileLogin["said"].stringValue
-                        UserManager.shared.profileId = profileLogin["profileId"].stringValue
-                        return
-                    }
-                }
-            }
-        }
-    }
-    
+
     func testLogin() {
         
         if UserManager.shared.loginToken.count > 0 {
