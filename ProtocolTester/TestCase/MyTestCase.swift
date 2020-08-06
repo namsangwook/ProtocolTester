@@ -24,17 +24,18 @@ extension TestMainViewController {
         
         if let purchaseRes = purchaselist(name: "purchaselist") {
             let offerId = purchaseRes["list"][0]["offerId"].stringValue
-            _ = purchaselisthidden(name: "purchaselisthidden", offerId: [offerId])
+//            _ = purchaselisthidden(name: "purchaselisthidden", offerId: [offerId])
         }
         
         if let collectionRes = collectionlist(name: "collectionlist") {
             let collectionList = collectionRes.arrayValue
             let offerId = collectionList[0]["offerId"].stringValue
 //            let offerId = "1000"
-            _ = collectionlisthidden(name: "collectionlisthidden", offerIdList: [offerId])
+//            _ = collectionlisthidden(name: "collectionlisthidden", offerIdList: [offerId])
         }
         
         _ = retrieveowncouponlist(name: "retrieveowncouponlist")
+        
         if let coupons = retrieveproductcouponlist(name: "retrieveproductcouponlist") {
             let coupons = coupons["result"].arrayValue
             coupons.enumerated().forEach { (index, coupon) in
