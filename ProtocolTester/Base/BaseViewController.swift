@@ -498,7 +498,7 @@ extension BaseViewController {
                         parameters: (method == .get || method == .delete) ? parameters : parameters,
                         encoding: (method == .get || method == .delete) ? URLEncoding.queryString : JSONEncoding.default,
                         headers: headers)
-            .validate(statusCode: 200..<300)
+//            .validate(statusCode: 200..<300)
             .responseData { (response: AFDataResponse<Data>) in
                 if let url = response.request?.url {
                     print("\n==================================================================================================")

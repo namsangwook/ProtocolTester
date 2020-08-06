@@ -134,13 +134,13 @@
 			isa = PBXGroup;
 			children = (
 				242268952481E020005A437F /* Logger.swift */,
+				241E061524CE77EA00149220 /* Defines.swift */,
 				242268962481E020005A437F /* UserManager.swift */,
 				241E060524CE5F5300149220 /* SlidingTabs.storyboard */,
 				241E060324CE5F5300149220 /* SlidingTabsCell.swift */,
 				241E060424CE5F5300149220 /* SlidingTabsViewController.swift */,
 				241E060D24CE655600149220 /* UIColor+Extension.swift */,
 				241E060B24CE651E00149220 /* GradientView.swift */,
-				241E061524CE77EA00149220 /* Defines.swift */,
 				241E061F24CECE3A00149220 /* PaddingLabel.swift */,
 				2400F2AA24D252BB004B4F09 /* Date+Extension.swift */,
 			);

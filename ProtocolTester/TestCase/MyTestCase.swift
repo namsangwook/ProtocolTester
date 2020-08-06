@@ -23,15 +23,19 @@ extension TestMainViewController {
         }
         
         if let purchaseRes = purchaselist(name: "purchaselist") {
-            let offerId = purchaseRes["list"][0]["offerId"].stringValue
-//            _ = purchaselisthidden(name: "purchaselisthidden", offerId: [offerId])
+            if purchaseRes["list"].arrayValue.count > 0 {
+                let offerId = purchaseRes["list"][0]["offerId"].stringValue
+                //            _ = purchaselisthidden(name: "purchaselisthidden", offerId: [offerId])
+            }
         }
         
         if let collectionRes = collectionlist(name: "collectionlist") {
             let collectionList = collectionRes.arrayValue
-            let offerId = collectionList[0]["offerId"].stringValue
-//            let offerId = "1000"
-//            _ = collectionlisthidden(name: "collectionlisthidden", offerIdList: [offerId])
+            if collectionList.count > 0 {
+                let offerId = collectionList[0]["offerId"].stringValue
+                //            let offerId = "1000"
+                //            _ = collectionlisthidden(name: "collectionlisthidden", offerIdList: [offerId])
+            }
         }
         
         _ = retrieveowncouponlist(name: "retrieveowncouponlist")

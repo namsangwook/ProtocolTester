@@ -37,6 +37,7 @@ class ResultCell: UITableViewCell {
                     name.textColor = UIColor(136, 191, 180)
                     method.textColor = UIColor(136, 191, 180)
                     result.textColor = UIColor(136, 191, 180)
+                    method.text = ""
                 } else if data.result == "fail" {
                     name.textColor = UIColor(247, 107, 107)
                     method.textColor = UIColor(247, 107, 107)

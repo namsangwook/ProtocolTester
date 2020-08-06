@@ -14,7 +14,8 @@ class Defines {
     static let recommendUrl = "http://222.122.207.46:8080/rec"    // TB
     static let searchUrl = "http://222.122.207.44:8080/ser"       // TB
     
-//    static let baseUrl = "http://59.15.95.42:4090/service"                  // Staging
+    
+//    static let baseUrl = "http://10.4.1.70:8888/service"                  // Staging
 //    static let recommendUrl = "http://iptv.recommendrec.3bbtv.com:8080/rec" // Staging
 //    static let searchUrl = "http://iptv.totalser.3bbtv.com:8080/ser"        // Staging
     

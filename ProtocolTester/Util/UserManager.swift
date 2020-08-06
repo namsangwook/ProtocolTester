@@ -48,6 +48,9 @@ class UserManager {
     var loginId: String = "test830"
     var loginPw: String = "1234"
 
+//    var loginId: String = "ktds@kt.com"
+//    var loginPw: String = "1234"
+
     var categoryVersion: String = "0"
     var overallCategoryId: String = ""
     var newReleaseCategoryId: String = ""

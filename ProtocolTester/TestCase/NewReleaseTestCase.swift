@@ -21,9 +21,11 @@ extension TestMainViewController {
             return
         }
         
-        _ = vodlikePost(name: "vodlike(\( contentList[0]["contentGroupId"]))", contentId: contentList[0]["contentGroupId"].stringValue)
-        
-        _ = vodlikeDelete(name: "vodlike(\( contentList[0]["contentGroupId"]))", contentId: contentList[0]["contentGroupId"].stringValue)
+        if contentList.count > 0 {
+            _ = vodlikePost(name: "vodlike(\( contentList[0]["contentGroupId"]))", contentId: contentList[0]["contentGroupId"].stringValue)
+            
+            _ = vodlikeDelete(name: "vodlike(\( contentList[0]["contentGroupId"]))", contentId: contentList[0]["contentGroupId"].stringValue)
+        }
         
         var packageProduct: JSON?
         
