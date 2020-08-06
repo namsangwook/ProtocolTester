@@ -45,8 +45,8 @@ class UserManager {
             
         }
     }
-    var loginId: String = "test830"
-    var loginPw: String = "1234"
+    var loginId: String = Defines.loginId
+    var loginPw: String = Defines.loginPw
 
 //    var loginId: String = "ktds@kt.com"
 //    var loginPw: String = "1234"

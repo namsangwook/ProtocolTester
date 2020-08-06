@@ -702,7 +702,7 @@ extension BaseViewController {
 
     func checkotp(name: String = "", otp: String) -> JSON? {
         appendTestCase(name: name)
-        let requestUrl = Defines.baseUrl + "/otp"
+        let requestUrl = Defines.baseUrl + "/checkotp"
         let params = [
             "loginId": UserManager.shared.loginId,
             "otp": otp

@@ -32,7 +32,7 @@ extension TestMainViewController {
         if let collectionRes = collectionlist(name: "collectionlist") {
             let collectionList = collectionRes.arrayValue
             if collectionList.count > 0 {
-                let offerId = collectionList[0]["offerId"].stringValue
+                            let offerId = collectionList[0]["offerId"].stringValue
                 //            let offerId = "1000"
                 //            _ = collectionlisthidden(name: "collectionlisthidden", offerIdList: [offerId])
             }
