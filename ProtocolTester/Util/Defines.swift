@@ -17,7 +17,8 @@ class Defines {
     static let loginPw = "1234"
 
     
-//    static let baseUrl = "http://10.4.1.70:8888/service"                  // Staging
+////    static let baseUrl = "http://10.4.1.70:8888/service"                  // Staging
+//    static let baseUrl = "http://mbs-ex.3bbtv.com/service"                  // Live
 //    static let recommendUrl = "http://iptv.recommendrec.3bbtv.com:8080/rec" // Staging
 //    static let searchUrl = "http://iptv.totalser.3bbtv.com:8080/ser"        // Staging
 //    static let loginId = "dki01@gmail.com"
