@@ -157,17 +157,17 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ltr-OA-WTB">
-                                        <rect key="frame" x="0.0" y="0.0" width="104" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="99" height="38"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbf-oG-m1i">
-                                                <rect key="frame" x="0.0" y="6.5" width="74" height="25"/>
+                                                <rect key="frame" x="0.0" y="6.5" width="69" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="dHo-vE-A5X"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                                <state key="normal" title="Start">
+                                                <state key="normal" title="Test">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="highlighted">
@@ -187,7 +187,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUf-C7-hoW">
-                                                <rect key="frame" x="79" y="6.5" width="0.0" height="25"/>
+                                                <rect key="frame" x="74" y="6.5" width="0.0" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="jgB-gj-ZOm"/>
                                                 </constraints>
@@ -210,7 +210,7 @@
                                                 </connections>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="LBb-Om-8ey">
-                                                <rect key="frame" x="84" y="9" width="20" height="20"/>
+                                                <rect key="frame" x="79" y="9" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                     </stackView>
