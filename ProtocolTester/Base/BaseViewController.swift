@@ -829,7 +829,7 @@ extension BaseViewController {
         params["contentType"] = contentType
         params["contentPath"] = contentPath
         params["movieId"] = movieId
-        params["payYn"] = payYn ? "Y" : "N"
+        params["payYN"] = payYn ? "Y" : "N"
         params["resumeYn"] = resumeYn ? "Y" : "N"
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }

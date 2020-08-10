@@ -54,8 +54,9 @@ extension TestMainViewController {
         
         
         if let profile =
-            profileCreate(name: "profileCreate", profileName: "swnam2", profilePic: imageSample)
+            profileCreate(name: "profileCreate(swnam2)", profileName: "swnam2", profilePic: imageSample)
         {
+            _ = getprofile(name: "getprofile")
             let profileId = profile["profileId"].stringValue
             _ = profileDelete(name: "profileDelete", profileId: profileId)
         }
