@@ -27,7 +27,6 @@ class Defines {
     static let credential = "OTA:64c1aaa37a"
     
     
-//    //    static let baseUrl = "http://10.4.1.70:8888/service"              // Live
 //    static let baseUrl = "http://mbs-ex.3bbtv.com/service"                  // Live
 //    static let recommendUrl = "http://iptv.recommendrec.3bbtv.com:8080/rec" // Live
 //    static let searchUrl = "http://iptv.totalser.3bbtv.com:8080/ser"        // Live
