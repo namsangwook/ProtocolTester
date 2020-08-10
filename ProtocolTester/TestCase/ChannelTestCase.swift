@@ -19,9 +19,12 @@ extension TestMainViewController {
         guard let channelList = channel["channelList"].array else {
             return
         }
-        let channelId = channelList[0]["serviceId"].stringValue
-        _ = epg(name: "epg", channelId: channelId)
-        _ = watchinginfo(name: "watchinginfo", channelId: channelId)
+        
+        if channelList.count > 0 {
+            let channelId = channelList[0]["serviceId"].stringValue
+            _ = epg(name: "epg", channelId: channelId)
+            _ = watchinginfo(name: "watchinginfo", channelId: channelId)
+        }
         channelList.forEach { (channel) in
             if channel["serviceId"].stringValue == "265" {
                 _ = nodeip(name: "nodeip(\(channel["serviceName"].stringValue))",

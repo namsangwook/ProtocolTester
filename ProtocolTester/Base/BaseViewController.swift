@@ -94,7 +94,7 @@ class BaseViewController: UIViewController {
     func getHeaders(method: HTTPMethod) -> HTTPHeaders {
         let uuid = UUID().uuidString
         //        let base64 = "OTA:ota_system".toBase64()
-        let credential = Data("OTA:ota_system".utf8).base64EncodedString()
+        let credential = Data(Defines.credential.utf8).base64EncodedString()
 
         let headers: HTTPHeaders = [
             "Accept": "application/json",
@@ -511,7 +511,7 @@ extension BaseViewController {
                     }
                 }
                 
-                print(">>> Headers : \(String(describing: headers))")
+                print(">>> Headers : \(String(describing: headers!))")
                 guard let data = response.data else {
                     completion(false, nil, response, nil)
                     Logger.log("data is nil")

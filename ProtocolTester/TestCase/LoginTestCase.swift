@@ -60,11 +60,11 @@ extension TestMainViewController {
             _ = profileDelete(name: "profileDelete", profileId: profileId)
         }
         
-        _ = accountresetpassword(name: "accountresetpassword", loginPw: "4321")
+        _ = accountresetpassword(name: "accountresetpassword(4321)", loginPw: "4321")
         
 //        _ = loginott(name: "loginott", loginId: UserManager.shared.loginId, loginPw: "4321", loginToken: "")
-        
-        _ = accountresetpassword(name: "accountresetpassword", loginPw: "1234")
+    
+        _ = accountresetpassword(name: "accountresetpassword(1234)", loginPw: "1234")
         
         if let otp = otp(name: "otp") {
             let otpNum = otp["otp"].stringValue
