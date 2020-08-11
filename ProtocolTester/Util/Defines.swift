@@ -21,9 +21,9 @@ class Defines {
         case .tb:
             return "http://222.122.207.37/service"
         case .staging:
-            return "http://mbs-ex.3bbtv.com/service"
+            return "https://mbs-ex.3bbtv.com/service"
         case .live:
-            return "http://mbs-ex.3bbtv.com/service"
+            return "https://mbs-ex.3bbtv.com/service"
         }
     }
     
@@ -32,7 +32,8 @@ class Defines {
         case .tb:
             return "http://222.122.207.46:8080/rec"
         case .staging:
-            return "http://iptv.recommendrec.3bbtv.com:8080/rec"
+            return "https://iptv.recommendrec.3bbtv.com/rec"
+//            return "http://iptv.recommendrec.3bbtv.com:8080/rec"
         case .live:
             return "http://iptv.recommendrec.3bbtv.com:8080/rec"
         }
@@ -42,11 +43,12 @@ class Defines {
     static var searchUrl: String {
         switch serverInfo {
         case .tb:
-            return "http://222.122.207.44:8080/ser"
+            return "http://222.122.207.37/ser/totalSearch"
         case .staging:
             return "http://iptv.totalser.3bbtv.com:8080/ser"
+//            return "https://mbs-svc.3bbtv.com/ser/totalSearch"
         case .live:
-            return "http://iptv.totalser.3bbtv.com:8080/ser"
+            return "https://mbs-svc.3bbtv.com/ser/totalSearch"
         }
 
     }
@@ -78,7 +80,8 @@ class Defines {
         case .tb:
             return "OTA:ota_system"
         case .staging:
-            return "OTA:64c1aaa37a" // "OTI:25d7f0af67"
+//            return "OTA:64c1aaa37a"
+            return "OTI:25d7f0af67"
         case .live:
             return "OTA:c8ec3dcfbf"
         }

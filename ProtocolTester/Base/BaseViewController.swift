@@ -1160,7 +1160,7 @@ extension BaseViewController {
         params["exposure_time"] = exposure_time
         params["STB_VER"] = UserManager.shared.appVersion
         params["won_yn"] = won_yn
-        params["TRANSACTION_ID"] = UserManager.shared.deviceToken
+        params["TRANSACTION_ID"] = UUID().uuidString
         params["langType"] = UserManager.shared.languageCode
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
