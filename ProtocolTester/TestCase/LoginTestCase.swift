@@ -14,6 +14,14 @@ extension TestMainViewController {
 
     func testLogin() {
         
+        if Defines.serverInfo == .tb {
+            addLog(">>> Connecting to TB")
+        } else if Defines.serverInfo == .staging {
+            addLog(">>> Connecting to Staging")
+        }
+        
+//        UserManager.shared.loginToken = ""
+        
         if UserManager.shared.loginToken.count > 0 {
             addLog(">> try token login with token", extra1: "login token : \(UserManager.shared.loginToken)")
 
@@ -36,7 +44,7 @@ extension TestMainViewController {
                 }
             }
         } else {
-            addLog(">> try token login with token", extra1: "login token : \(UserManager.shared.loginToken)")
+            addLog(">> try login with id, password")
 
             if let login = loginott(name: "\tloginott", loginId: UserManager.shared.loginId, loginPw: UserManager.shared.loginPw) {
                 processAutoLogin(login: login)

@@ -287,7 +287,8 @@ class BaseViewController: UIViewController {
         }
         
         overallList.forEach { (content) in
-            if content["categoryName"].stringValue == "New Release" {
+            if content["categoryName"].stringValue == "New Release" ||
+                content["categoryName"].stringValue == "NEW RELEASE" {
                 UserManager.shared.newReleaseCategoryId = content["categoryId"].stringValue
             }
         }

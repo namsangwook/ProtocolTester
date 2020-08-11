@@ -22,7 +22,8 @@ extension TestMainViewController {
         
         
         contentList.forEach { (content) in
-            if content["categoryName"].stringValue == "New Release" {
+            if content["categoryName"].stringValue == "New Release" ||
+               content["categoryName"].stringValue == "NEW RELEASE" {
                 UserManager.shared.newReleaseCategoryId = content["categoryId"].stringValue
             }
             if content["linkType"] == "asset" {
