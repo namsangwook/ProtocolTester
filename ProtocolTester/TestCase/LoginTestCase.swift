@@ -87,5 +87,7 @@ extension TestMainViewController {
         _ = changeinfo(name: "changeinfo", profileName: "swnam", profilePic: imageSample)
         
         
+        _ = deeplogin(name: "deeplogin", oneTimeToken: "test")
+        
     }
 }

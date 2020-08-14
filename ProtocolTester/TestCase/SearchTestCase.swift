@@ -38,5 +38,7 @@ extension TestMainViewController {
         _ = topcontent(name: "topcontent",
                        CONTENT: "VOD", REC_TYPE: "TOP_MOVIE", PRODUCT_LIST: "2T01", REQ_DATE: dateString, REQ_CODE: UserManager.shared.deviceType, CONS_RATE: rateFlag)
         
+        _ = trendnow(name: "trendnow")
+        
     }
 }

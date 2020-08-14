@@ -668,6 +668,15 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
     
+    func deeplogin(name: String = "", oneTimeToken: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/deeplogin"
+        
+        var params: Parameters = Parameters()
+        params["oneTimeToken"] = oneTimeToken
+        return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
+    }
+    
     func changeinfo(name: String = "", profileName: String = "", profilePic: String = "") -> JSON? {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/profile/changeinfo"
@@ -1124,6 +1133,15 @@ extension BaseViewController {
         params["payment"] = [["method": method, "price": totalPrice]]
         return requestMBSSynchronous(requestUrl, method: .post, parameters: params, index: self.testCaseIndex)
     }
+    
+    func trendnow(name: String = "") -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/trendnow"
+        var params: Parameters = Parameters()
+        params["language"] = UserManager.shared.languageCode
+        return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
+    }
+
 }
 
 
