@@ -82,6 +82,7 @@ class Defines {
         case .staging:
 //            return "OTA:64c1aaa37a"
             return "OTI:25d7f0af67"
+//            return "OTW:057f893217"
         case .live:
             return "OTA:c8ec3dcfbf"
         }
