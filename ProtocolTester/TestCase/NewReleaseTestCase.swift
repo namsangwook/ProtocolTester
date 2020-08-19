@@ -55,7 +55,10 @@ extension TestMainViewController {
         
 
         
-        _ = seasonlist(name: "seasonlist", seriesId: UserManager.shared.seriesVodContentId)
+        if UserManager.shared.seriesVodContentId.count > 0 {
+            _ = seasonlist(name: "seasonlist", seriesId: UserManager.shared.seriesVodContentId)
+        }
+        
         
     }
 }

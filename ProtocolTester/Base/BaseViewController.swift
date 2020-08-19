@@ -830,6 +830,48 @@ extension BaseViewController {
         return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
     }
     
+    func resumetime(name:String = "", contentId: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/resumetime"
+        
+        var params = Parameters()
+        //          params["said"] = UserManager.shared.SAID
+        params["profileId"] = UserManager.shared.profileId
+        params["contentId"] = contentId
+        return requestMBSSynchronous(requestUrl, parameters: params, index: self.testCaseIndex)
+    }
+    
+    func createResumeTime(name:String = "", contentId: String, resumeTime: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/resumetime"
+        
+        var params = Parameters()
+        //          params["said"] = UserManager.shared.SAID
+        params["profileId"] = UserManager.shared.profileId
+        params["contentId"] = contentId
+        params["resumeTime"] = resumeTime
+        return requestMBSSynchronous(requestUrl, method: .post,  parameters: params, index: self.testCaseIndex)
+    }
+    
+    func updateResumeTime(name:String = "",
+                          contentId: String,
+                          resumeTime: String,
+                          startTime: String,
+                          endTime: String) -> JSON? {
+        appendTestCase(name: name)
+        let requestUrl = Defines.baseUrl + "/resumetime"
+        
+        var params = Parameters()
+        //          params["said"] = UserManager.shared.SAID
+        params["profileId"] = UserManager.shared.profileId
+        params["contentId"] = contentId
+        params["resumeTime"] = resumeTime
+        params["startTime"] = startTime
+        params["endTime"] = endTime
+
+        return requestMBSSynchronous(requestUrl, method: .put,  parameters: params, index: self.testCaseIndex)
+    }
+    
     func nodeip(name:String = "", contentType: String = "VOD", contentPath: String, movieId: String, payYn: Bool, resumeYn: Bool) -> JSON? {
         appendTestCase(name: name)
         let requestUrl = Defines.baseUrl + "/nodeip"
